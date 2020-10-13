@@ -83,9 +83,10 @@ class AdvertsController extends Controller
      * @param  \App\Advert  $advert
      * @return \Illuminate\Http\Response
      */
-    public function edit(Advert $advert)
+    public function edit(Advert $advert,$id)
     {
-        //
+        $advert = Advert::find($id);
+        return view('user/adverts/edit', compact('advert'));
     }
 
     /**

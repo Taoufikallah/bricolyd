@@ -17,7 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('dashboard')->group(function() {
@@ -41,6 +42,15 @@ Route::prefix('dashboard')->group(function() {
     Route::get('/adverts/edit/advert/{id}', 'AdminAdvertsController@edit')->name('advert.edit');
     Route::POST('/adverts/update/advert/{id}', 'AdvertsController@update')->name('advert.update');
     Route::POST('/adverts/delete/advert/{id}', 'AdminAdvertsController@destroy')->name('advert.delete');
+
+    // The All Route for adverts
+    Route::get('/users', 'UserController@index')->name('advert');
+    Route::get('/users/create', 'UserController@create')->name('user.create');
+    Route::POST('/users/store/user', 'UserController@store')->name('user.store');
+    Route::get('/users/show/user/{id}', 'UserController@show')->name('user.show');
+    Route::get('/users/edit/user/{id}', 'UserController@edit')->name('user.edit');
+    Route::POST('/users/update/user/{id}', 'UserController@update')->name('user.update');
+    Route::POST('/users/delete/user/{id}', 'UserController@destroy')->name('user.delete');
 });
 Route::group(['middleware' => ['auth', 'admin']], function(){
     Route::get('/dashboard',function (){

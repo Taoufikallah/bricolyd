@@ -5,8 +5,8 @@
 	<div class="row">
 		<div class="col-md-3 ">
 		     <div class="list-group ">
-              <a href="#" class="list-group-item list-group-item-action ">Dashboard</a>
-              <a href="adverts" class="list-group-item list-group-item-action active">Adverts</a>
+              <a href="/home" class="list-group-item list-group-item-action ">Dashboard</a>
+              <a href="/home/adverts" class="list-group-item list-group-item-action active">Adverts</a>
               <a href="#" class="list-group-item list-group-item-action">Media</a>
               <a href="#" class="list-group-item list-group-item-action">Category</a>
               <a href="#" class="list-group-item list-group-item-action">Comments</a>
@@ -60,8 +60,10 @@
                                     </td> --}}
                                     
                                     <td>{{ date(' M j Y', strtotime($value->created_at)) }}</td>
-                                    <td>{!! Form::open(['method' => 'POST', 'route' => ['advert.delete',$value->id], 'style' => 'display:inline' ]) !!}
-                                        {!! Form::button('', ['type' => 'submit', 'class' => 'btn btn-danger btn-sm glyphicon glyphicon-trash ']) !!}
+                                    <td>
+                                        <a href="{{ route('advert.edit', $value->id) }}" class="btn btn-warning btn-sm"><i class="nav-icon fas fa-edit "></i></a>
+                                         {!! Form::open(['method' => 'POST', 'route' => ['user.delete',$value->id], 'style' => 'display:inline' ]) !!}
+                                        {!! Form::button('', ['type' => 'submit', 'class' => 'btn btn-danger  fas fa-trash-alt ']) !!}
                                         {!! Form::close() !!}
                                     </td>
                                     
