@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
 
 class CategoryController extends Controller
 {
@@ -16,7 +17,8 @@ class CategoryController extends Controller
     }
     public function index()
     {
-        //
+        $category = Category::all();
+        return view('admin.categories.index', compact('category'));
     }
 
     /**
@@ -26,7 +28,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $category = Category::all();
+        return view('admin.categories.create', compact('category'));
     }
 
     /**
@@ -37,7 +40,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, array(
+            'name' => 'required',
+        ));
+
+        $category = new Category;
+        $category->name = $request->name;
+        $category->save();
+
+       return redirect()->route('category');
     }
 
     /**
@@ -48,7 +59,8 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = Category::find($id);
+        return view('admin.categories.show', compact('category'));
     }
 
     /**
@@ -59,7 +71,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -71,7 +84,22 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::find($id);
+
+        $this->validate($request, array(
+            'name'=> 'required',
+            
+        ));
+        $category = Category::find($id);
+        
+        
+
+       $category->name = $request->name;
+       
+
+        $category->save();
+
+        return redirect()->route('category');
     }
 
     /**

@@ -12,4 +12,9 @@ class Category extends Model
     public $primaryKey = 'id';
     // Timestamps
     public $timestamps = true;
+
+    public function advert()
+    {
+        return $this->hasMany(Advert::class);
+    }
 }

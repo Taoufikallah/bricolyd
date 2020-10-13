@@ -12,4 +12,12 @@ class Advert extends Model
     public $primaryKey = 'id';
     // Timestamps
     public $timestamps = true;
+
+    public function category() 
+    {
+        return $this->hasMany(Category::class);
+    }
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
 }

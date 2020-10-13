@@ -11,7 +11,7 @@ use App\Advert;
 use App\Category;
 use DB;
 
-class AdvertsController extends Controller
+class AdminAdvertsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,10 +23,9 @@ class AdvertsController extends Controller
     }
     public function index()
     {
-        /* $advert = Advert::where('user_id', Auth::user()->get()); */
         $advert = Advert::all();
         /* $advert = Auth::user()->advert; */
-        return view('user.adverts.index',compact('advert'));
+        return view('admin.adverts.index',compact('advert'));
     }
 
     /**
@@ -39,7 +38,7 @@ class AdvertsController extends Controller
         $advert = Advert::all();
         $categories =  Category::pluck('name', 'id');
 
-        return view('user.adverts.create',compact('categories'));
+        return view('front-office.adverts.create',compact('categories'));
     }
 
     /**
@@ -74,7 +73,7 @@ class AdvertsController extends Controller
     public function show(Advert $advert)
     {
         $advert = Advert::find($id);
-        return view('user.adverts.index', compact('advert.show'));
+        return view('ront-office.adverts.index', compact('advert.show'));
     }
 
     /**

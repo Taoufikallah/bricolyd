@@ -14,10 +14,14 @@ class CreateAdvertsTable extends Migration
     public function up()
     {
         Schema::create('adverts', function (Blueprint $table) {
-            $table->id();
+            $table->Increments('id');
             $table->mediumText('description');
+            $table->text('city');
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories'); 
+
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users'); 
             $table->timestamps();
         });
     }

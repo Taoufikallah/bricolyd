@@ -6,11 +6,9 @@
 		<div class="col-md-3 ">
 		     <div class="list-group ">
               <a href="#" class="list-group-item list-group-item-action active">Dashboard</a>
-              <a href="home/adverts" class="list-group-item list-group-item-action">Adverts</a>
-              <a href="#" class="list-group-item list-group-item-action">Media</a>
+              <a href="/home/adverts/create" class="list-group-item list-group-item-action">Adverts</a>
               <a href="#" class="list-group-item list-group-item-action">Category</a>
               <a href="#" class="list-group-item list-group-item-action">Comments</a>
-              <a href="#" class="list-group-item list-group-item-action">Settings</a>
               
               
             </div> 
